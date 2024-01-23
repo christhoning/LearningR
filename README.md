@@ -1,5 +1,3 @@
-Christine Thoning - Biomedicine/Diabetes
-
 # This will be used for testing out Git
 
 TODO: Add more to the title of your project here
