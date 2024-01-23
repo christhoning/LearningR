@@ -1,3 +1,5 @@
+Christine Thoning - Biomedicine/Diabetes
+
 TODO: Add more to the title of your project here
 
 # LearningR:
