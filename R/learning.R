@@ -96,3 +96,125 @@ NHANES_small %>%
   rename(bp_systolic = bp_sys_ave)
 
 
+# Filtering Data by Row  --------------------------------------------------
+
+filter(NHANES_small, phys_active == "No")
+
+# Filter with "equal to"
+NHANES_small %>%
+  filter(phys_active == "No")
+
+# Filter with "not equal to"
+NHANES_small %>%
+  filter(phys_active != "No")
+
+NHANES_small %>%
+  filter(bmi == 25)
+
+# Filter with "greater than or equal to"
+NHANES_small %>%
+  filter(bmi >= 25)
+
+# Filter with "and"
+TRUE & TRUE
+TRUE & FALSE
+FALSE & FALSE
+
+# Filter with "or"
+TRUE | TRUE
+TRUE | FALSE
+FALSE | FALSE
+
+# BE very careful when using logical operators
+# ALWAYS verify filtering after using logical operators
+# with large datasets, the select function can be used to verify (by only showing the columns used in the filtering)
+
+# Example "and"
+NHANES_small %>%
+  filter(bmi == 25 & phys_active == "No") %>%
+  select(bmi, phys_active)
+
+# Example "or"
+NHANES_small %>%
+  filter(bmi == 25 | phys_active == "No") %>%
+  select(bmi, phys_active)
+
+
+# Arranging the rows  -----------------------------------------------------
+
+# Arranging by age
+# Numerical value, therefore arranging by ascending number
+NHANES_small %>%
+  arrange(age)
+
+# Arranging by
+# Character value, therefor arranging by ascending letters
+NHANES_small %>%
+  arrange(education) %>%
+  select(education)
+
+# Arrange age by descending
+NHANES_small %>%
+  arrange(desc(age)) %>%
+  select(age)
+
+# Arrange by multiple factors/values
+NHANES_small %>%
+  arrange(age, education)
+
+
+# Transform or Add Columns  -----------------------------------------------
+
+NHANES_small %>%
+  mutate(age = age * 12)
+
+NHANES_small %>%
+  mutate(
+    age = age * 12,
+    logged_bmi = log(bmi)
+  ) %>%
+  select(age, logged_bmi)
+
+# Create a new column using if_else
+# if_else has 3 arguments, 1. condition, 2. what to write is condition is true, 3. what to write if the condition is false
+NHANES_small %>%
+  mutate(
+    old = if_else(age >= 30, "Yes", "No")
+  ) %>%
+  select(old)
+
+
+
+# Exercise 7.12  ----------------------------------------------------------
+
+# Filter nhanes_small so only those participants with a BMI of more than or equal to 20 and less than or equal to 40, and keep those who have diabetes.
+
+# Create a new variable called mean_arterial_pressure by applying the formula:
+    # (DBP = bp_dia_ave and SBP = bp_sys_ave) to calculate Mean Arterial Pressure.
+    # Hint: In R, use + to add, * to multiply, and / to divide.
+
+# Create a new variable called young_child for cases where age is less than 6 years.
+
+# Finally, add and commit these changes to the Git history with the RStudio Git Interface.
+
+# Push to GitHub to synchronize with your GitHub repository.
+
+
+
+# 1. BMI between 20 and 40 with diabetes
+NHANES_small %>%
+  # Format should follow: variable >= number or character
+  filter(bmi >= 20 & bmi <= 40 & diabetes == "Yes")
+
+# Pipe the data into mutate function and:
+nhanes_modified <- NHANES_small %>% # Specifying dataset
+  mutate(
+    # 2. Calculate mean arterial pressure
+    mean_arterial_pressure = ((2 * bp_dia_ave) + bp_sys_ave) / 3,
+    # 3. Create young_child variable using a condition
+    young_child = if_else(age < 6, "Yes", "No")
+  )
+
+nhanes_modified
+
+
