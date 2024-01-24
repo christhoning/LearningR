@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 Christine Thoning - Biomedicine/Diabetes
 This will be used for testing out Git
 A random sentence. 
+=======
+# This will be used for testing out Git
+A random github sentence. 
+>>>>>>> 933a147ae5ce078dc140eea073460c1d3b5107de
 
 TODO: Add more to the title of your project here
 
