@@ -3,7 +3,39 @@ title: "Reproducible Document"
 author: "Christine Thoning"
 format: html
   
+
 ---
+Christine Thoning 
+PhD Student 
+SFS Group
+SDU
+
+# Introduction 
+Here is the **introduction** to my *project*
+
+# Methods and Results 
+Methods and Results are a very **important** part of a *project*.
+## Analysis
+*Where* would we be without **analysis**?
+# Discussion 
+Discussion is where we *elevate* our **science!**
+
+```{r}
+2+2
+```
+
+
+Get some practice writing Markdown by completing these tasks in the doc/learning.qmd file.
+
+Right under the YAML header, insert a list (either numbered or unnumbered) with your name and affiliation(s)/institution(s).
+Create three level 1 headers (#), called “Intro”, “Methods and Results”, and “Discussion”.
+Create a level 2 header (##) under “Methods and Results” called “Analysis”.
+Write one random short sentence under each header. Bold (**word**) one word in each and italicize (*word*) another.
+Insert a code chunk to make a simple calculation (e.g. 2 + 2).
+Finally, add and commit these changes into the Git history with ⌃⌥M or with the Palette (⌘⇧P, then type “commit”).
+
+
+
 # Setup 
 ```{r setup}
 #| message: false
@@ -60,3 +92,10 @@ nhanes_small %>%
   ) %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
 ```
+
+```{r}
+
+```
+
+
+
