@@ -200,7 +200,6 @@ NHANES_small %>%
 # Push to GitHub to synchronize with your GitHub repository.
 
 
-
 # 1. BMI between 20 and 40 with diabetes
 NHANES_small %>%
   # Format should follow: variable >= number or character
@@ -218,3 +217,46 @@ nhanes_modified <- NHANES_small %>% # Specifying dataset
 nhanes_modified
 
 
+# Calculating Summary Statistics ------------------------------------------
+
+# getting the maximum bmi
+NHANES_small %>%
+    summarise(max_bmi = max(bmi))
+
+# exclude NA values
+NHANES_small %>%
+    summarise(max_bmi = max(bmi, na.rm = TRUE),
+              min_bmi = min(bmi, na.rm = TRUE))
+
+result <- NHANES_small %>%
+    summarise(max_bmi = max(bmi, na.rm = TRUE),
+              min_bmi = min(bmi, na.rm = TRUE))
+
+
+# Summary Statistics by a Group -------------------------------------------
+
+NHANES_small %>%
+    group_by(diabetes) %>%
+    summarise(mean_age = mean(age, na.rm = TRUE),
+              mean_bmi = mean(bmi, na.rm = TRUE))
+
+# Filter out NA's
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes) %>%
+    summarise(mean_age = mean(age, na.rm = TRUE),
+              mean_bmi = mean(bmi, na.rm = TRUE))
+
+# Group by multiple factors
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes, phys_active) %>%
+    summarise(mean_age = mean(age, na.rm = TRUE),
+              mean_bmi = mean(bmi, na.rm = TRUE)) %>%
+    ungroup()
+
+
+# Saving Dataset as a File ------------------------------------------------
+
+readr::write_csv(NHANES_small,
+                here::here("data/NHANES_small.csv"))
