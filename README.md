@@ -1,5 +1,6 @@
 Christine Thoning - Biomedicine/Diabetes
 This will be used for testing out Git
+A random sentence. 
 
 TODO: Add more to the title of your project here
 
