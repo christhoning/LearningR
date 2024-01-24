@@ -94,3 +94,5 @@ rename(blood_pressure, bp_systolic = bp_sys_ave)
 NHANES_small %>%
   select(starts_with("bp_")) %>%
   rename(bp_systolic = bp_sys_ave)
+
+
