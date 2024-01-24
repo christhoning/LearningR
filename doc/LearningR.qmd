@@ -67,7 +67,7 @@ nhanes_small %>%
 # Prettier Table 
 
 ```{r}
-#| echo = false
+#| echo: false
 nhanes_small %>%
   filter(!is.na(diabetes), !is.na(education)) %>%
   group_by(diabetes, education) %>%
